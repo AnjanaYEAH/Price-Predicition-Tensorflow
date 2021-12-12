@@ -1,0 +1,22 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block title %}Profile - Project Avalon{% endblock %}
+
+{% block css %}
+<!-- CUSTOM STYLES -->
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- VIEW PROFILE SECTION -->
+<div class="container my-20" data-aos="fade-up">
+    <h1 class="mb-20">Profile</h1>
+    <p class="field"><span class="field-text">Username:</span>{{ user.username }}</p>
+    <p class="field"><span class="field-text">First name:</span>{{ user.first_name }}</p>
+    <p class="field"><span class="field-text">Surname:</span>{{ user.last_name }}</p>
+    <p class="field"><span class="field-text">Email:</span>{{ user.email }}</p>
+    <a class="btn-standard content-btn my-20" href="{% url 'accounts:edit_profile' %}">Edit profile</a>
+</div>
+{% endblock %}

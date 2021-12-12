@@ -1,0 +1,183 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block css %}
+<!-- HOME PAGE STYLES -->
+<link rel="stylesheet" media="screen" href="{% static 'main/css/particles.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- BACKEND MESSAGES -->
+{% if messages %}
+<div class="page-message msg" style="display:none;" role="alert">
+  {% for message in messages %}
+  <p class="container">{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- LARGE DISPLAY AREA -->
+<header class="masthead">
+  <!-- BACKGROUND ANIMATION -->
+  <div id="particles-js"></div>
+  <div id="cover-text" class="fade-in-top">
+    <h1>Project Avalon</h1>
+    <h2>A Financial Data Image Recognition System</h2>
+  </div>
+  <a id="find-out-more" class="btn-standard slide-down scale-in-center" href="#about">Find Out More</a>
+</header>
+
+
+<div class="container h-100">
+  <!-- ABOUT -->
+  <section id="about" data-aos="fade-up">
+    <h1 class="heading">About</h1>
+    <div class="content-section text-center">
+      <p>
+        The goal of Project Avalon is to utilise existing open-source technologies
+        in building a neural network to forecast stock prices.
+      </p><br>
+      <p>
+        Our solution applies deep reinforcement learning with TensorFlow - an open-source
+        machine learning framework - to identify patterns in graphed historical data.
+        Through image recognition, TensorFlow will aid us in predicting financial
+        markets.
+      </p><br>
+      <p>
+        Financial analysts can use our software to help decide whether they should
+        buy/sell/hold a particular stock.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <h1 class="heading" data-aos="fade-up">How it works</h1>
+    <div class="image-section">
+
+      <div class="img-caption" data-aos="fade-up">
+        <img class="media-img" src="{% static 'main/img/icons/csv.png' %}">
+        <p>Upload a CSV file</p>
+      </div>
+      <div class="img-caption" data-aos="fade-up">
+        <img class="media-img" src="{% static 'main/img/icons/candlestick.png' %}">
+        <p>Generate candlestick images</p>
+      </div>
+      <div class="img-caption" data-aos="fade-up">
+        <img class="media-img" src="{% static 'main/img/icons/cluster.png' %}">
+        <p>Cluster graph images using t-SNE.</p>
+      </div>
+      <div class="img-caption" data-aos="fade-up">
+        <img class="media-img" src="{% static 'main/img/icons/api.png' %}">
+        <p>Cluster graph images using t-SNE.</p>
+      </div>
+      <div class="img-caption" data-aos="fade-up">
+        <img class="media-img" src="{% static 'main/img/icons/www.png' %}">
+        <p>Output predictions and visualisations.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- APP PREVIEW-->
+  <section id="preview">
+    <div class="container">
+      <h1 class="heading" data-aos="fade-up">Preview</h1>
+      <div class="content-section">
+        <!-- VIDEO PREVIEW -->
+        <div data-aos="fade-up" class="media embed-responsive embed-responsive-16by9 mb-3">
+          <video class="embed-responsive-item" controls> <!-- poster for thumbnail -->
+            <source src="{% static 'main/video/preview_video.mp4' %}" />
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE BUILT IT SECTION -->
+  <section id="how-we-built-it">
+    <div class="container">
+      <h1 class="heading" data-aos="fade-up">How we built it</h1>
+      <div class="content-section">
+        <div class="image-section grow-horizontal-parent">
+
+          <img data-aos="fade-up" class="media media-img grow-horizontal" src="{% static 'main/img/technologies/python.png' %}">
+
+          <img data-aos="fade-up" class="media media-img grow-horizontal" src="{% static 'main/img/technologies/django.png' %}">
+
+          <img data-aos="fade-up" class="media media-img grow-horizontal" src="{% static 'main/img/technologies/tf.png' %}">
+
+          <img data-aos="fade-up" class="media media-img grow-horizontal" src="{% static 'main/img/technologies/highcharts.jpg' %}">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR TEAM SECTION -->
+  <section data-aos="fade-up" id="our-team" class="profile-section">
+    <div class="container">
+      <!-- Team Members -->
+      <h1 class="heading">Our Team</h1>
+
+      <div class="content-section profile-flex">
+        <div class="content-section profile-section">
+          <img class="profile-img rounded-circle" src="{% static 'main/img/team-members/toby.jpg' %}" alt="Image of Tobias Edwards.">
+          <div class="profile-text">
+            <p class="profile-name">Tobias Edwards</p>
+            <p class="profile-roles">Client liaison | Django developer | Back-end developer</p>
+          </div>
+        </div>
+
+        <div class="content-section profile-section">
+          <img class="profile-img rounded-circle" src="{% static 'main/img/team-members/pooja.png' %}" alt="Image of Pooja Sridhar.">
+          <div class="profile-text">
+            <p class="profile-name">Pooja Sridhar</p>
+            <p class="profile-roles">Deep-learning developer | Researcher</p>
+          </div>
+        </div>
+
+        <div class="content-section profile-section">
+          <img class="profile-img rounded-circle" src="{% static 'main/img/team-members/anjana.png' %}" alt="Image of Anjana Ratnayake.">
+          <div class="profile-text">
+            <p class="profile-name">Anjana Ratnayake</p>
+            <p class="profile-roles">Deep-learning developer | Researcher</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+{# Smooth Scrolling #}
+<script src="{% static 'base/js/smooth-scrolling.js' %}"></script>
+
+{# Message handling #}
+<script src="{% static 'main/js/message-handling.js' %}"></script>
+<script>
+  // BACKEND MESSAGE HANDLING
+  // Style messages based on type
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'warning' %}
+        messageType('form-error');
+      {% else %}
+        messageType('form-complete');
+      {% endif %}
+
+      showMessage('.msg');
+    {% endfor %}
+  {% endif %}
+</script>
+
+{# Particles background #}
+<script src="{% static 'main/js/particles/particles.js' %}"></script>
+<script src="{% static 'main/js/particles/app.js' %}"></script>
+{% endblock %}

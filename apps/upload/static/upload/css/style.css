@@ -1,0 +1,171 @@
+/******************************************************
+GENERAL
+******************************************************/
+a:hover {
+    color: inherit;
+}
+
+.loading-icon {
+    display: none;
+    width: 50px;
+    margin-top: 20px;
+}
+
+/******************************************************
+BACKEND MESSAGE HANDLING
+******************************************************/
+#error-list {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding: .75rem 1.25rem;
+    color: #fff;
+    background-color: rgb(255, 105, 105);
+}
+
+.notice {
+    color: #ccc;
+}
+
+/******************************************************
+BUTTONS: UPLOAD, DELETE
+******************************************************/
+.upload-file {
+    padding: 0.35em 0.5em !important;
+    background-color: white !important;
+    color: black !important;
+    border-color: #212529 !important;
+}
+
+.upload-file:hover {
+    color: white !important;
+    background-color: #212529 !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-standard:disabled {
+    color: grey !important;
+    border-color: grey !important;
+}
+
+.btn-standard:disabled:hover {
+    color: grey !important;
+    border-color: grey !important;
+    background-color: inherit !important;
+    cursor: default !important;
+}
+
+.remove-file {
+    padding: 0.35em 0.5em !important;
+    background-color: white !important;
+    color: #BD0000 !important;
+    border-color: #BD0000 !important;
+}
+
+.remove-file:hover {
+    color: white !important;
+    background-color: #BD0000 !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/******************************************************
+TABLE
+******************************************************/
+#file-explorer {
+    margin-top: 40px;
+}
+
+table {
+    width: 100%;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table, th, td {
+    border: none;
+}
+
+td, th {
+    padding: 15px 10px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    border-radius: 2px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+thead {
+    color: #000;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+tr:hover {
+    background-color: rgba(242, 242, 242, 0.5);
+    -webkit-transition: background-color .25s ease;
+    -o-transition: background-color .25s ease;
+    transition: background-color .25s ease;
+}
+
+.filename {
+    color: black;
+}
+
+.filename:hover {
+    border-bottom: 2px solid black;
+    text-decoration: none;
+}
+
+.ellipsis {
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 0;
+    overflow: hidden;
+}
+
+.tight {
+    /* cell is tight */
+    width: 1px;
+}
+
+@media (min-width: 768px) {
+    .tight {
+        white-space: nowrap;
+    }
+
+    .remove-file, .upload-file {
+        padding: 0.35em 1.2em !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #cell-filename {
+        width: 50%;
+    }
+
+    #cell-upload {
+        width: 20%;
+    }
+
+    #cell-actions {
+        width: 30%;
+    }
+}

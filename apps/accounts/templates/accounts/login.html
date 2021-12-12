@@ -1,0 +1,67 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block title %}Log in - Project Avalon{% endblock %}
+
+{% block content %}
+
+<!-- FORM ERROR MESSAGES -->
+{% if form.non_field_errors %}
+<div class="page-message form-error" style="display:none;" role="alert">
+    {% for error in form.non_field_errors %}
+    <p class="container">{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- BACKEND MESSAGES -->
+{% if messages %}
+<div class="page-message msg" style="display:none;" role="alert">
+    {% for message in messages %}
+    <p class="container">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- LOGIN SECTION -->
+<div class="form-page">
+    <div class="form fade-in-top">
+        <!-- FORM -->
+        <form method="post" action="{% url 'accounts:login' %}">
+            {% csrf_token %}
+            <p><input type="text" name="username" autofocus="" required="" id="id_username" class="input-field" placeholder="username"></p>
+
+            <p><input type="password" name="password" required="" id="id_password" class="input-field" placeholder="password"></p>
+
+            <button type="submit" value="Login">Login</button>
+            <a class="form-link" href="{% url 'accounts:signup' %}"">Don't have an account? Sign up</a><br>
+            <a class=" form-link" href="{% url 'accounts:password_reset' %}"">Forgot your password? Reset password</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+<script src="{% static 'accounts/js/form-error.js' %}"></script>
+<script>
+    // FORM ERROR HANDLING
+    {% if form.non_field_errors %}
+    shakeForm();
+    showMessage('.form-error');
+    {% endif %}
+
+    // BACKEND MESSAGE HANDLING
+    {% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'warning' %}
+        messageType('form-error');
+        {% else %}
+        messageType('form-complete');
+        {% endif %}
+        showMessage('.msg');
+    {% endfor %}
+    {% endif %}
+</script>
+{% endblock %}

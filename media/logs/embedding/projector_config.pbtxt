@@ -1,0 +1,9 @@
+embeddings {
+  tensor_name: "fc1_embedding:0"
+  metadata_path: "/Users/anjanaratnayake/Desktop/code_29/media/logs/embedding/metadata.tsv"
+  sprite {
+    image_path: "/Users/anjanaratnayake/Desktop/code_29/media/logs/embedding/sprite_images.png"
+    single_image_dim: 100
+    single_image_dim: 100
+  }
+}

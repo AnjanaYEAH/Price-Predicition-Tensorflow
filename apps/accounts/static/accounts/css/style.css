@@ -1,0 +1,65 @@
+/******************************************************
+LAYOUT
+******************************************************/
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+/******************************************************
+FORM OUTPUT STYLING
+******************************************************/
+.field, label, input {
+    margin-bottom: 7px;
+}
+
+label {
+    width: 120px;
+}
+
+.field-text {
+    display: inline-block;
+    width: 120px;
+}
+
+form ul {
+    border: 1px solid red;
+    padding: 15px 20px 15px 40px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 15px 0 15px;
+}
+
+/******************************************************
+FORM BUTTON
+******************************************************/
+.content-btn {
+    display: inline-block;
+    border-color: black !important;
+    background-color: white;
+    color: black !important;
+    margin-top: 5px;
+}
+
+.content-btn:hover {
+    color: white !important;
+    border-color: rgb(203, 45, 111) !important;
+    cursor: pointer;
+}
+
+.success {
+    background-color: white;
+}
+
+.success:hover {
+    background-color: #1E8003 !important;
+    border-color: #1E8003 !important;
+}
+
+#submit-profile {
+    display: block;
+}

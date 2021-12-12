@@ -1,0 +1,23 @@
+/******************************************************
+HIGHCHARTS JS STYLE EDITS (OPTIONAL)
+******************************************************/
+.highcharts-background {
+    /* graph background colour */
+    fill: #efefef;
+    /* border colour */
+    stroke: #a4edba;
+    /* border width */
+    stroke-width: 2px;
+}
+
+.highcharts-candlestick-series .highcharts-point-up {
+    /* outline */
+    stroke: green;
+    fill: silver;
+}
+
+.highcharts-candlestick-series .highcharts-point-down {
+    /* outline */
+    stroke: red;
+    fill: silver;
+}

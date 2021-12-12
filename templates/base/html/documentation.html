@@ -1,0 +1,26 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'base/css/documentation.css' %}">
+<!-- ADDITIONAL CSS -->
+{% block upload-css %}{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+<!-- UPLOAD APP GOES HERE -->
+{% block upload-html %}{% endblock %}
+
+<div class="container my-20 px-0" data-aos="fade-up">
+  <!-- DOCUMENTATION -->
+  <section id="documentation" class="page-section">
+    <div class="container h-100">
+      <form method="get" action="{% static 'downloads/user-manual.pdf' %}">
+        <button class="btn-standard black-style" type="submit">Download user manual</button>
+      </form>
+    </div>
+  </section>
+</div>
+{% endblock %}

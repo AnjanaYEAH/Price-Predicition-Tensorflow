@@ -1,0 +1,34 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit profile - Project Avalon{% endblock %}
+
+{% block css %}
+<!-- CUSTOM PAGE STYLES -->
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- EDIT PROFILE SECTION -->
+<div class="container my-20" data-aos="fade-up">
+    <h1 class="mb-20">Edit profile</h1>
+    <!-- FORM -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="link-btn" href="{% url 'accounts:change_password' %}">Change password here.</a>
+        <button type="submit" id="submit-profile" class="btn-standard content-btn success mb-20 mt-20">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    // Remove unwanted form outputs
+    $(document).ready(function() {
+        $("#id_password, .helptext, label[for='id_password']").remove();
+    });
+</script>
+{% endblock %}

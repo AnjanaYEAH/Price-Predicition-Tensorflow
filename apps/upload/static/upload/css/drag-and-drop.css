@@ -1,0 +1,193 @@
+/******************************************************
+DRAG AND DROP ZONE STYLES
+******************************************************/
+#upload-area {
+    margin-top: 30px;
+}
+
+#dropzone {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background-color: #c8dadf;
+    padding: 100px 20px;
+    outline: 2px dashed #263A40;
+    outline-offset: -10px;
+    max-height: 300px;
+    min-height: 300px;
+}
+
+.dropzone-text {
+    color: #263A40;
+    font-size: 1.3em;
+    text-decoration: none;
+    max-width: 80%;
+}
+
+.dropzone-text:hover {
+    text-decoration: none;
+}
+
+/******************************************************
+PROGRESS BAR
+******************************************************/
+.upload-progress {
+    display: none;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.upload-progress-bar {
+    height: 15px;
+    background-color: blue;
+}
+
+.upload-progress-text {
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+/******************************************************
+DRAG AND DROP ZONE: OTHER STAGES
+******************************************************/
+#cancel-upload {
+    display: none;
+    white-space: nowrap;
+    margin: 0;
+}
+
+#generating-images-text {
+    display: none;
+    color: black;
+    font-weight: 500;
+}
+
+.graph-link-a {
+    padding: 10px 20px;
+}
+
+.graph-link-a:hover {
+    color: #1E8003;
+    background-color: white !important;
+    border-color: white !important;
+    text-decoration: none;
+}
+
+#manual-upload-link:hover strong {
+    color: #1F7E99;
+}
+
+.progress-orange {
+    background-color: rgba(255, 121, 0, 0.6) !important;
+}
+
+.results-bg {
+    background-color: #1E8003 !important;
+    outline: none !important;
+}
+
+/******************************************************
+DRAG AND DROP ZONE EFFECTS
+******************************************************/
+/* Hover over */
+#dropzone.over {
+    background-color: rgba(200, 218, 223, 0.5) !important;
+    outline-color: rgba(38, 58, 64, 0.5) !important;
+}
+
+/* File rejected */
+#dropzone.rejected {
+    background-color: red;
+}
+
+/* File uploaded */
+#dropzone.uploaded {
+    background-color: #2CBF04;
+    outline: none !important;
+}
+
+/* Fade transition dropzone */
+#dropzone.fade {
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    -o-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    opacity: 1;
+}
+
+/******************************************************
+ANIMATION KEY FRAMES
+******************************************************/
+/* ROTATE CENTER */
+.rotate-center {
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.6s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/* SCALE IN CENTER */
+.scale-in-center {
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}

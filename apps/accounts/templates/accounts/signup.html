@@ -1,0 +1,101 @@
+{% extends "base/html/base.html" %}
+<!-- Use extend instead of include since we need the entire app, not just the template. -->
+
+{% load static %}
+
+{% block title %}Sign up - Project Avalon{% endblock %}
+
+{% block content %}
+<!-- FORM ERROR MESSAGES -->
+{% if form.non_field_errors %}
+<div class="page-message form-error slide-in-top" role="alert">
+    {% for error in form.non_field_errors %}
+    <p class="container">{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- BACKEND MESSAGES -->
+{% if messages %}
+<div class="page-message form-error slide-in-top" role="alert">
+    {% for message in messages %}
+    <p class="container">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- SIGN UP SECTION -->
+<div class="form-page">
+    <div class="form sign-up fade-in-top">
+        <h2 class="heading">Sign up</h2>
+        <!-- FORM -->
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign up</button>
+            <a class="form-link" href="{% url 'accounts:login' %}">Already have an account? Log in</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    // Locate and move default error message positions
+    $("li").each(function(index) {
+        var errorText = $(this).text();
+
+        if (errorText == "Username already exists.") {
+            $(this).parent().remove();
+            $("#id_username").after("<p class='error-text fade-in'>" + errorText + "</p>");
+        } else if (errorText == "Email already exists." || errorText == "Enter a valid email address.") {
+            $(this).parent().remove();
+            $("#id_email").after("<p class='error-text'>" + errorText + "</p>");
+        } else if (errorText == "Passwords don't match.") {
+            $(this).parent().remove();
+            $("#id_password2").after("<p class='error-text'>" + errorText + "</p>");
+        } else if (errorText == "Incorrect registration key.") {
+            $(this).parent().remove();
+            $("#id_regkey").after("<p class='error-text'>" + errorText + "</p>");
+        }
+    });
+
+    {% for username-error in form.username.errors %}
+        // If error then show red border over field
+        $("#id_username").delay(300).queue(function() {
+            $(this).addClass('red-border');
+        });
+        $("#id_username").focus(function() {
+            $("#id_username").removeClass('red-border');
+        });
+    {% endfor %}
+
+    {% for username-error in form.email.errors %}
+        $("#id_email").delay(300).queue(function() {
+            $(this).addClass('red-border');
+        });
+        $("#id_email").focus(function() {
+            $("#id_email").removeClass('red-border');
+        });
+    {% endfor %}
+
+    {% for username-error in form.password2.errors %}
+        $("#id_password1, #id_password2").delay(300).queue(function() {
+            $(this).addClass('red-border');
+        });
+        $("#id_password1, #id_password2").focus(function() {
+            $("#id_password1, #id_password2").removeClass('red-border');
+        });
+    {% endfor %}
+
+    {% for username-error in form.regkey.errors %}
+        $("#id_regkey").delay(300).queue(function() {
+            $(this).addClass('red-border');
+        });
+        $("#id_regkey").focus(function() {
+            $("#id_regkey").removeClass('red-border');
+        });
+    {% endfor %}
+</script>
+{% endblock %}

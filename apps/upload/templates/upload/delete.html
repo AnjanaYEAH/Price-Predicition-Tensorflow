@@ -1,0 +1,25 @@
+{% extends "base/html/base.html" %}
+
+{% load static %}
+
+{% block title %}Delete file - Project Avalon{% endblock %}
+
+{% block css %}
+<!-- CUSTOM PAGE STYLES -->
+<link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- DELETE FILE SECTION -->
+<div class="container my-20" data-aos="fade-up">
+    <h1 class="mb-20">Are you sure you want to delete this file?</h1>
+    <!-- FORM -->
+    <form action='.' method='POST'>{% csrf_token %}
+        <p>
+            <input type='submit' value='Yes' class="btn-standard content-btn mb-20 mt-20" />
+            <a class="btn-standard content-btn success mb-20 mt-20" href="{% url 'upload:drag_and_drop' %}">Cancel</a>
+        </p>
+
+    </form>
+</div>
+{% endblock %}

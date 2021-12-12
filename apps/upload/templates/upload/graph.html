@@ -1,0 +1,81 @@
+{% extends "base/html/documentation.html" %}
+
+{% load static %}
+
+{% block upload-css %}
+<!-- CUSTOM PAGE STYLES -->
+<link rel="stylesheet" href="{% static 'upload/css/results-layout.css' %}">
+<link rel="stylesheet" href="{% static 'upload/css/style.css' %}">
+{% endblock %}
+
+{% block upload-html %}
+<div class="container" data-aos="fade-up">
+  <!-- RESULTS TAB BUTTONS -->
+  <ul class="options">
+    <li><button id="chartButton" class="tab-button activeButton">Graph</button></li>
+    <li><button id="visualiseButton" class="tab-button">Visualise</button></li>
+    <li><button id="resultsButton" class="tab-button">Results</button></li>
+  </ul>
+
+  <div class="options-canvas">
+    <!-- HIGHCHARTS JS GRAPH AREA -->
+    <div id="chart-container"></div>
+
+    <!-- TENSORBOARD AREA -->
+    <div id="visualise-container">
+      <div class="loading-section">
+        <p class="loading-text">Loading visualisation...</p>
+        <img class="loading-icon" src="{% static 'base/gif/gears.gif' %}">
+      </div>
+    </div>
+
+    <!-- PREDICTION RESULTS TABLE -->
+    <div id="results-container">
+      <div class="loading-section">
+        <p class="loading-text">Loading results...</p>
+        <img class="loading-icon" src="{% static 'base/gif/gears.gif' %}">
+      </div>
+      <table id="results-table">
+        <th>Action</th>
+        <th>Percentage</th>
+
+        <tr class="rows">
+          <td>Buy</td>
+          <td id="buy-p">x%%%</td>
+        </tr>
+
+        <tr class="rows">
+          <td>Sell</td>
+          <td id="sell-p">x%%%</td>
+        </tr>
+
+        <tr class="rows">
+          <td>Hold</td>
+          <td id="hold-p">x%%</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <p id="filename">{{ fileName }}</p>
+  <p class='notice'><strong>Note:</strong> If your visualisation does not connect successfully, please right-click on the broken visualisation frame and click 'Reload frame'.</p>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script src="{% static 'upload/js/highstock.js' %}"></script>
+<script src="{% static 'upload/js/exporting.js' %}"></script>
+<script src="{% static 'upload/js/papaparse.min.js' %}"></script>
+<script src="{% static 'upload/js/results-actions.js' %}"></script>
+<script src="{% static 'upload/js/parse-data.js' %}"></script>
+<script src="{% static 'upload/js/graph-candlestick.js' %}"></script>
+<script src="{% static 'upload/js/visualise-request.js' %}"></script>
+<script>
+  // get CSV file name from Django request and parse it into JSON format.
+  var data = "{{fileName}}";
+  var filePath = "../../../../media/csv-files/" + "{{fileName}}" + ".csv";
+  parsing(filePath);
+</script>
+
+{% endblock %}

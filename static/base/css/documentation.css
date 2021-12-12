@@ -1,0 +1,14 @@
+/******************************************************
+DOCUMENTATION STYLING
+******************************************************/
+.black-style {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+.black-style:hover {
+  cursor: pointer;
+}
+#documentation {
+  margin: 30px auto;
+}

@@ -1,0 +1,87 @@
+{% extends "base/html/documentation.html" %}
+
+{% load static %}
+{% load formatters %}
+
+{% block title %}Upload a file - Project Avalon{% endblock %}
+
+{% block upload-css %}
+<!-- CUSTOM PAGE STYLES -->
+<link rel="stylesheet" href="{% static 'upload/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'upload/css/drag-and-drop.css' %}">
+{% endblock %}
+
+{% block upload-html %}
+<!-- ERRORS GO HERE -->
+<div id="error-list"></div>
+
+<div class="container">
+    <!-- DRAG AND DROP ZONE AREA -->
+    <div id="upload-area">
+        <div id="dropzone" class="fade scale-in-center">
+            <p><a id="manual-upload-link" class="dropzone-text" href="#"><strong>Choose a CSV file</strong> or drag it here.</a></p>
+            <p><a id="cancel-upload" class="dropzone-text" href="#">Click to cancel upload.</a></p>
+            <p id="generating-images-text">Generating images...</p>
+            <img class="loading-icon" src="{% static 'base/gif/gears.gif' %}">
+            <div class="upload-progress">
+                <p class="upload-progress-text">0%</p>
+                <div class="upload-progress-bar" role="uploadprogressbar" style="height: 10px;width: 0%;background-color: blue;"></div>
+            </div>
+            <p id="graph-link"></p>
+        </div>
+
+        {# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+        <input id="fileupload" type="file" name="file" value="new-file" style="display: none;" data-url="{% url 'upload:drag_and_drop' %}" data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+    </div>
+
+    <!-- FILE EXPLORER TABLE -->
+    <table id="file-explorer" data-aos="fade-up">
+        <thead>
+            <tr>
+                <th id="cell-filename">File name</th>
+                <th id="cell-upload" class="tight">Upload date</th>
+                <th id="cell-actions" class="tight" colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for csv in csv_files %}
+            <tr>
+                <td class="ellipsis"><a class="filename" href="{{ csv.file.url }}">{{ csv.file.name|formatFilename }}</a></td>
+                <td>{{ csv.uploaded_at }}</td>
+                <td class="tight"><button class="upload-file btn-standard">Upload</button></td>
+                <td class="tight"><button class="remove-file btn-standard" onclick="location.href='{{ csv.id }}/delete/';">Remove</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+{# JQUERY FILE UPLOAD SCRIPTS #}
+<!-- <script>
+    window.processing = false;
+    window.onbeforeunload = function(e) {
+        // Cancel the event
+        console.log("uploading");
+        e.preventDefault();
+        // Chrome requires returnValue to be set
+        e.returnValue = 'Are you sure you want to leave? All processes will be aborted.';
+    }
+    window.addEventListener('unload', function(event) {
+        // cleanup - kill generating images task
+    });
+</script> -->
+{# FILEUPLOAD SCRIPTS #}
+<script src="{% static 'js/jquery-file-upload/vendor/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'js/jquery-file-upload/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'js/jquery-file-upload/jquery.fileupload.js' %}"></script>
+<script src="{% static 'js/jquery-file-upload/jquery.fileupload-process.js' %}"></script>
+<script src="{% static 'js/jquery-file-upload/jquery.fileupload-validate.js' %}"></script>
+
+{# CUSTOM DRAG AND DROP UPLOAD SCRIPTS #}
+<script src="{% static 'upload/js/file-upload.js' %}"></script>
+<script src="{% static 'upload/js/drag-effects.js' %}"></script>
+{% endblock %}
